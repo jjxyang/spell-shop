@@ -1,13 +1,13 @@
 package com.jjxyang.spellshop;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.jjxyang.spellshop.screens.SplashScreen;
 
-public class SpellShop extends ApplicationAdapter {
+public class SpellShop extends Game {
 	SpriteBatch batch;
 	Texture img;
 
@@ -17,8 +17,14 @@ public class SpellShop extends ApplicationAdapter {
 	// libgdx helper class, logs current FPS each second
     private FPSLogger fpsLogger;
 
+    public SplashScreen getSplashScreen() {
+        return new SplashScreen(this);
+    }
+
 	@Override
 	public void create () {
+        //super.create();
+
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 
@@ -28,9 +34,7 @@ public class SpellShop extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-        // clears the screen with given RGB color
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		super.render();
 
         // draws batch of sprites
 		batch.begin();
